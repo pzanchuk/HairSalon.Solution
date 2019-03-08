@@ -74,7 +74,6 @@ namespace HairSalon.Models
       return newStylist;
     }
 
-
     public List<Client> GetClients()
     {
       List<Client> allStylistClients = new List<Client>{};

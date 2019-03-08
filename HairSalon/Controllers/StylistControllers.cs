@@ -95,5 +95,24 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index");
     }
 
+    //Update Stylist
+    [HttpPost("/stylists/{stylistId}/update")]
+    public ActionResult Update(int stylistId, string newName)
+    {
+      Stylist stylist = Stylist.Find(stylistId);
+      stylist.Edit(newName);
+      return RedirectToAction("Show",  new { id = stylistId });
+    }
+
+    //Edits Stylist
+    [HttpGet("/stylists/{stylistId}/edit")]
+    public ActionResult Edit(int stylistId)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Stylist stylist = Stylist.Find(stylistId);
+      model.Add("stylist", stylist);
+      return View(model);
+    }
+
   }
 }

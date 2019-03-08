@@ -13,13 +13,14 @@ namespace HairSalon.Tests
 
     public ClientControllerTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=pavel_zanchuk_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=pavel_zanchuk_test;";
     }
 
     public void Dispose()
     {
       Stylist.ClearAll();
       Client.ClearAll();
+      Specialty.ClearAll();
     }
 
     [TestMethod]
@@ -46,6 +47,29 @@ namespace HairSalon.Tests
       Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
     }
 
+    [TestMethod]
+    public void Delete_ReturnsCorrectType_ActionResult()
+    {
+      ClientController controller = new ClientController();
+      IActionResult view = controller.Delete(1, 1);
+      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+    }
+
+    [TestMethod]
+    public void Edit_ReturnsCorrectType_ActionResult()
+    {
+      ClientController controller = new ClientController();
+      IActionResult view = controller.Edit(1, 2);
+      Assert.IsInstanceOfType(view, typeof(ViewResult));
+    }
+
+    [TestMethod]
+    public void Edit_HasCorrectModelType_Dictionary()
+    {
+      ViewResult view = new ClientController().Edit(2, 2) as ViewResult;
+      var result = view.ViewData.Model;
+      Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
+    }
 
   }
 }

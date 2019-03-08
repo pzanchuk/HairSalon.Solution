@@ -12,13 +12,14 @@ namespace HairSalon.Tests
   {
     public StylistControllerTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=pavel_zanchuk_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=pavel_zanchuk_test;";
     }
 
     public void Dispose()
     {
       Stylist.ClearAll();
       Client.ClearAll();
+      Specialty.ClearAll();
     }
 
     [TestMethod]
@@ -84,5 +85,54 @@ namespace HairSalon.Tests
       var result = view.ViewData.Model;
       Assert.IsInstanceOfType(result, typeof(List<Stylist>));
     }
+
+    [TestMethod]
+    public void Delete_ReturnsCorrectType_ActionResult()
+    {
+      StylistController controller = new StylistController();
+      IActionResult view = controller.Delete(1);
+      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+    }
+
+    [TestMethod]
+    public void DeleteAllClients_ReturnsCorrectType_ActionResult()
+    {
+      StylistController controller = new StylistController();
+      IActionResult view = controller.DeleteAllClients(3);
+      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+    }
+
+    [TestMethod]
+    public void DeleteAll_ReturnsCorrectType_ActionResult()
+    {
+      StylistController controller = new StylistController();
+      IActionResult view = controller.DeleteAll();
+      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+    }
+
+    [TestMethod]
+    public void Edit_ReturnsCorrectType_ActionResult()
+    {
+      StylistController controller = new StylistController();
+      IActionResult view = controller.Edit(5);
+      Assert.IsInstanceOfType(view, typeof(ViewResult));
+    }
+
+    [TestMethod]
+    public void Edit_HasCorrectModelType_Dictionary()
+    {
+      ViewResult view = new StylistController().Edit(1) as ViewResult;
+      var result = view.ViewData.Model;
+      Assert.IsInstanceOfType(result, typeof(Dictionary<string, object>));
+    }
+
+    [TestMethod]
+    public void Update_ReturnsCorrectType_ActionResult()
+    {
+      StylistController controller = new StylistController();
+      IActionResult view = controller.Update(5, "string");
+      Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+    }
+
   }
 }

@@ -58,8 +58,6 @@ _This program allows user to keep track of Clients and Stylists._
   * _Example input: click button "View all stylists" from home page, click "Delete all stylists"_
   * _Example output: list of current Stylists will be shown._       
 
-
-
 ## Setup/Installation Requirements
 * _Navigate your web browser to https://github.com/pzanchuk/HairSalon.Solution_
 * _Click the green button "Clone or download" on the repository page._

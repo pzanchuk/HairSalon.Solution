@@ -13,15 +13,51 @@ _This program allows user to keep track of Clients and Stylists._
 * _Program will accept user input for Stylist._
   * _Example input: "Pavel"._
   * _Example output: "Pavel"._
+
 * _Program will accept user input for clients._
   * _Example input: "Panatda"._
   * _Example output: "Panatda"._
-* _Program will display in browser information about client _
-  * _Example input: click button "View all stylists" from home page, choose a stylist, from the list click on any client to show the details about that client._
-  * _Example output: info page about client will be shown._
-* _Program will display in browser information for each stylist that is currently available from DB._
-  * _Example input: click button "View all stylists" from home page, click on any stylist._
-  * _Example output: list of assigned clients will popup if any clients were added to that stylist._
+
+* _Program will accept user input for specialties._
+  * _Example input: "Colorist"._
+  * _Example output: "Colorist"._
+
+* _Program will display in browser information about Stylist_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, details about that Stylist will be shown._
+  * _Example output: info page about that Stylist will be shown._
+
+* _Program will display in browser information about Specialties_
+  * _Example input: click button "View all specialties" from home page, choose a specialty, details about that Specialty will be shown._
+  * _Example output: info page about that Specialty will be shown._      
+
+* _Program will display in browser information about Client_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, from the list click on any Client to show the details about that Client._
+  * _Example output: info page about Client will be shown._
+
+* _Program will edit information about Client_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, from the list click on any Client to show the details about that Client, click "Edit this Client"_
+  * _Example output: form to change info will be shown._
+
+* _Program will delete a single Client assigned to specific Stylist_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, from the list click on any Client to show the details about that Client, click "Delete this Client"_
+  * _Example output: info page about Stylist that Client was assigned to will be shown._
+
+* _Program will delete all Clients assigned to specific Stylist _
+  * _Example input: click button "View all stylists" from home page, choose a stylist, click "Delete all clients"_
+  * _Example output: info page about Stylist those Clients were assigned to will be shown._  
+
+* _Program will edit information about Stylist_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, click "Edit this stylist"_
+  * _Example output: form to change info will be shown._
+
+* _Program will delete single Stylist_
+  * _Example input: click button "View all stylists" from home page, choose a stylist, click "Delete this stylist"_
+  * _Example output: list of current Stylists will be shown._
+
+* _Program will delete all Stylists_
+  * _Example input: click button "View all stylists" from home page, click "Delete all stylists"_
+  * _Example output: list of current Stylists will be shown._       
+
 
 
 ## Setup/Installation Requirements
@@ -35,7 +71,9 @@ https://help.github.com/articles/cloning-a-repository-from-github/_
 CREATE DATABASE pavel_zanchuk;
 USE pavel_zanchuk;
 CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255));
-CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);_
+CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+CREATE TABLE specialties_stylists (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+CREATE TABLE specialties (id serial PRIMARY KEY, specialty_id INT, stylist_id INT);_
 
 ## Support and contact details
 
